@@ -1,0 +1,23 @@
+-- CreateTable
+CREATE TABLE "Point" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "math" INTEGER NOT NULL,
+    "english" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Student" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "studentNum" INTEGER NOT NULL,
+    "grade" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Blog" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "title" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "postedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
