@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>検索結果</title>
+  </head>
+  <body>
+    <!-- 検索結果のタイトル -->
+    <h1>検索結果:"<%= q %>"</h1>
+    <p><a href="/">Back</a></p>
+    <% if (posts && posts.length) { %>
+      <% posts.forEach(function(p){ %>
+        <div>
+          <h3><%= p.title %></h3>
+          <small><%= new Date(p.postedAt).toLocaleString() %></small>
+          <p><%= p.content %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No results.</p>
+    <% } %>
+  </body>
+ </html>

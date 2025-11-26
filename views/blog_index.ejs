@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ブログ</title>
+    <style>body{font-family:system-ui, -apple-system,Segoe UI,Roboto,Helvetica,Arial;} .post{border:1px solid #ddd;padding:8px;margin:8px 0}</style>
+  </head>
+  <body>
+    <h1>ブログサイト</h1>
+
+    <section>
+      <h2>投稿する</h2>
+      <!-- 投稿フォーム -->
+      <!-- /createにPOSTリクエストを送信 -->
+      <form action="/create" method="POST">
+        <label>タイトル: <input name="title" required></label><br>
+        <label>投稿日: <input name="postedAt" type="datetime-local"></label><br>
+        <label>文章:<br><textarea name="content" rows="6" cols="60" required></textarea></label><br>
+        <button type="submit">投稿</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>検索する</h2>
+      <!-- 検索フォーム -->
+      <!-- /searchにGETリクエストを送信 -->
+      <form action="/search" method="GET">
+        <input name="q" placeholder="キーワード">
+        <button type="submit">検索</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>投稿一覧</h2>
+      <!-- 投稿がある場合 -->
+      <% if (posts && posts.length) { %>
+        <% posts.forEach(function(p){ %>
+          <article class="post">
+            <!-- 投稿一覧を表示(p.title / p.content) -->
+            <h3><%= p.title %></h3>
+            <small><%= new Date(p.postedAt).toLocaleString() %></small>
+            <p><%= p.content %></p>
+          </article>
+        <% }) %>
+      <!-- 投稿がない場合 -->
+      <% } else { %>
+        <p>No posts yet.</p>
+      <% } %>
+    </section>
+  </body>
+</html>
